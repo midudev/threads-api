@@ -14,7 +14,7 @@ app.get('/api/users/:userId', async (context) => {
 })
 
 app.use('*', async (c, next) => {
-  c.json({ error: 'Not found', status: 404 })
+  c.notFound()
 })
 
 export default {
