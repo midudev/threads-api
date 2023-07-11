@@ -1,21 +1,17 @@
-# Hono with Bun runtime
+# Threads API no oficial
 
-## Getting Started
+<div align="center">
+  <small>Para fines educativos</small>
+</div>
 
-### Cloning the repo
+## Primeras pruebas con Curl
 
 ```sh
-bun create hono ./NAME_HERE
+curl 'https://www.threads.net/api/graphql' \
+  -H 'content-type: application/x-www-form-urlencoded' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36' \
+  -H 'x-ig-app-id: 238260118697367' \
+  --data 'variables={ "userID": "8242141302" }' \
+  --data doc_id=23996318473300828
 ```
-
-### Development
-
-```
-bun run start
-```
-
-Open http://localhost:3000 with your browser to see the result.
-
-### For more information
-
-See <https://honojs.dev/>

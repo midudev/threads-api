@@ -5,10 +5,11 @@
     "bun-types": "latest"
   },
   "dependencies": {
-    "hono": "^2.2.5"
+    "hono": "^3.3.0"
   },
   "scripts": {
-    "start": "bun run src/index.ts"
+    "start:api": "bun run src/api/index.ts",
+    "watch:api": "bun run --watch src/api/index.ts"
   },
-  "module": "src/index.js"
+  "module": "src/lib/index.js"
 }
