@@ -19,7 +19,9 @@ const fetchBase = ({ documentId, variables }) => {
 export const fetchUserIdByName = ({ userName }) => {
   if (IS_DEBUG) console.info(`https://www.threads.net/@${userName}`)
 
-  return fetch(`https://www.threads.net/@${userName}`)
+  return fetch(`https://www.threads.net/@${userName}`, {
+      headers: { 'sec-fetch-site': 'same-site' }
+  })
     .then(res => res.text())
     .then(html => {
       const regex = /{"user_id":"(\d+)"}/g
