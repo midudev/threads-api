@@ -9,9 +9,10 @@ const fetchBase = ({ documentId, variables }) => {
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
       'user-agent': 'Threads API midu client',
-      'x-ig-app-id': THREADS_APP_ID
+      'x-ig-app-id': THREADS_APP_ID,
+      "x-fb-lsd": "oPTVCVmtkN9KqeSBWfaAK6",
     },
-    body: `variables=${JSON.stringify(variables)}&doc_id=${documentId}`
+    body: `variables=${JSON.stringify(variables)}&doc_id=${documentId}&doc_id=23996318473300828&lsd=oPTVCVmtkN9KqeSBWfaAK6`
     })
   .then(response => response.json())
 }
