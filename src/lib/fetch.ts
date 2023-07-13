@@ -1,8 +1,4 @@
-import {
-  ENDPOINTS_DOCUMENT_ID,
-  THREADS_APP_ID,
-  GRAPHQL_ENDPOINT,
-} from './consts';
+import { ENDPOINTS_DOCUMENT_ID, THREADS_APP_ID, GRAPHQL_ENDPOINT } from './consts';
 import { IS_DEBUG } from './env';
 import { ThreadsUserProfileResponse } from '../types/threads-api';
 import { mapUserProfile } from './map';

@@ -7,8 +7,6 @@ console.log('Initializing API server on port', port);
 
 const app = new Hono();
 
-
-
 // Endpoint to get user profiles based on userName
 app.get('/api/users', async (context) => {
   try {
@@ -69,7 +67,6 @@ app.get('/api/threads/:threadId/replies', async (context) => {
   }
 });
 
-
 // Endpoint to get user profile threads
 app.get('/api/users/:userId/threads', async (context) => {
   try {
@@ -89,10 +86,6 @@ app.get('/api/users/:userId/threads', async (context) => {
     return context.text('Internal Server Error', 500);
   }
 });
-
-
-
-
 
 app.use('*', async (c) => {
   c.notFound();
