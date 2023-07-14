@@ -4,8 +4,8 @@ import {
   GRAPHQL_ENDPOINT,
 } from './consts';
 import { IS_DEBUG } from './env';
-import { ThreadsUserProfileResponse } from '../types/threads-api';
-import { mapUserProfile } from './map';
+import { ThreadsRepliesResponse, ThreadsUserProfileResponse, UserThreadsResponse } from '../types/threads-api';
+import { mapThreadsReplies, mapUserProfile, mapUserThreads } from './map';
 
 const fetchBase = ({ documentId, variables }) => {
   return fetch(GRAPHQL_ENDPOINT, {
@@ -67,10 +67,12 @@ export const fetchUserProfileThreads = async ({
   }
 
   const variables = { userID: userId };
-  return fetchBase({
+  const data = (await fetchBase({
     variables,
     documentId: ENDPOINTS_DOCUMENT_ID.USER_PROFILE_THREADS,
-  });
+  })) as UserThreadsResponse; 
+
+  return mapUserThreads(data);
 };
 
 export const fetchUserReplies = async ({
@@ -91,15 +93,17 @@ export const fetchUserReplies = async ({
   });
 };
 
-export const fetchThreadReplies = ({ threadId }) => {
+export const fetchThreadReplies = async ({ threadId }) => {
   const variables = { postID: threadId };
-  return fetchBase({
+  const data = (await fetchBase({
     variables,
     documentId: ENDPOINTS_DOCUMENT_ID.USER_PROFILE_THREADS_REPLIES,
-  });
+  })) as ThreadsRepliesResponse;
+
+  return mapThreadsReplies(data);
 };
 
-export const fetchPostReplies = ({ threadId }) => {
+export const fetchPostReplies = async ({ threadId }) => {
   const variables = { postID: threadId };
   return fetchBase({
     variables,
